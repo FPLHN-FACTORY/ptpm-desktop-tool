@@ -4,7 +4,9 @@
  */
 package fpl.ptpm.tool;
 
-import fpl.ptpm.tool.helper.DbConnector;
+import fpl.ptpm.common.CommonLink;
+import fpl.ptpm.utility.DbConnector;
+import fpl.ptpm.utility.HyperlinkOpener;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,8 @@ public class TestPortSqlServer extends javax.swing.JFrame {
      */
     public TestPortSqlServer() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,7 +42,7 @@ public class TestPortSqlServer extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnCheck = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        btnGuideConfig = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         cbUsingSSL = new javax.swing.JCheckBox();
 
@@ -73,8 +77,13 @@ public class TestPortSqlServer extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton2.setText("Hướng dẫn cấu hình");
+        btnGuideConfig.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnGuideConfig.setText("Hướng dẫn cấu hình");
+        btnGuideConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuideConfigActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setText("Hướng dẫn điền thông tin");
@@ -98,7 +107,7 @@ public class TestPortSqlServer extends javax.swing.JFrame {
                         .addComponent(txtServerName, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuideConfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +144,7 @@ public class TestPortSqlServer extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnGuideConfig)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -183,6 +192,11 @@ public class TestPortSqlServer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCheckActionPerformed
 
+    private void btnGuideConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuideConfigActionPerformed
+        // TODO add your handling code here:
+        HyperlinkOpener.open(CommonLink.G_CONFIG_SQL_SERVER);
+    }//GEN-LAST:event_btnGuideConfigActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,8 +234,8 @@ public class TestPortSqlServer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheck;
+    private javax.swing.JButton btnGuideConfig;
     private javax.swing.JCheckBox cbUsingSSL;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

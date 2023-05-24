@@ -4,13 +4,19 @@
  */
 package fpl.ptpm.tool;
 
-import fpl.ptpm.tool.helper.HyperlinkOpener;
+import fpl.ptpm.common.CommonLink;
+import fpl.ptpm.tool.core.NewsReader;
+import fpl.ptpm.tool.model.News;
+import fpl.ptpm.tool.ui.NewsLabel;
+import fpl.ptpm.utility.HyperlinkOpener;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 /**
  *
  * @author Phong
  */
-public class Application extends javax.swing.JFrame {
+public final class Application extends javax.swing.JFrame {
 
     /**
      * Creates new form TestPort
@@ -18,7 +24,22 @@ public class Application extends javax.swing.JFrame {
     public Application() {
         initComponents();
         
+        this.setLocationRelativeTo(null);
+        loadNews();
+    }
+    
+    public void loadNews() {
+        pnNews.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pnNews.setPreferredSize(new Dimension(482, 260));
         
+        News[] news = new NewsReader().getAll();
+        for(News n : news) {
+            NewsLabel newsLabel = new NewsLabel(n);
+            newsLabel.setPreferredSize(new Dimension(
+                    pnNews.getPreferredSize().width, 
+                    newsLabel.getPreferredSize().height * 2));
+            pnNews.add(newsLabel);
+        }
     }
 
     /**
@@ -32,7 +53,7 @@ public class Application extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtLogo = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnNews = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnTestSqlServer = new javax.swing.JButton();
         txtFacebook = new javax.swing.JLabel();
@@ -53,16 +74,16 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tin tức & Sự kiện", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
+        pnNews.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tin tức & Sự kiện", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnNewsLayout = new javax.swing.GroupLayout(pnNews);
+        pnNews.setLayout(pnNewsLayout);
+        pnNewsLayout.setHorizontalGroup(
+            pnNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnNewsLayout.setVerticalGroup(
+            pnNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 221, Short.MAX_VALUE)
         );
 
@@ -135,8 +156,8 @@ public class Application extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,7 +175,7 @@ public class Application extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -165,22 +186,22 @@ public class Application extends javax.swing.JFrame {
 
     private void txtFacebookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFacebookMouseClicked
         // TODO add your handling code here:
-        HyperlinkOpener.open(CommonConfig.FB_GROUP);
+        HyperlinkOpener.open(CommonLink.FB_GROUP);
     }//GEN-LAST:event_txtFacebookMouseClicked
 
     private void txtYouTubeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtYouTubeMouseClicked
         // TODO add your handling code here:
-        HyperlinkOpener.open(CommonConfig.YOUTUBE);
+        HyperlinkOpener.open(CommonLink.YOUTUBE);
     }//GEN-LAST:event_txtYouTubeMouseClicked
 
     private void txtLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLogoMouseClicked
         // TODO add your handling code here:
-        HyperlinkOpener.open(CommonConfig.FB_GROUP_CLUB);
+        HyperlinkOpener.open(CommonLink.FB_GROUP_CLUB);
     }//GEN-LAST:event_txtLogoMouseClicked
 
     private void txtTikTokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTikTokMouseClicked
         // TODO add your handling code here:
-        HyperlinkOpener.open(CommonConfig.TIKTOK);
+        HyperlinkOpener.open(CommonLink.TIKTOK);
     }//GEN-LAST:event_txtTikTokMouseClicked
 
     private void btnTestSqlServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestSqlServerActionPerformed
@@ -227,8 +248,8 @@ public class Application extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTestSqlServer;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pnNews;
     private javax.swing.JLabel txtFacebook;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtTikTok;
