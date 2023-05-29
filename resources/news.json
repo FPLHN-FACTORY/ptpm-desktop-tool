@@ -1,9 +1,16 @@
 [
 	{
-		"name": "Seminar Coding Convention",
-		"date": "23-05-2023",
+		"name": "Workshop CRUD với Spring Boot - JSP sử dụng JPA",
+		"date": "30-05-2023",
 		"startTime": "20:30",
 		"endTime": "22:30",
-		"link": "https://forms.gle/rp9Gf9QhiFqa65Fn6"
+		"link": "https://forms.gle/ZFRGNtMsZipqvfBLA"
+	},
+	{
+		"name": "Workshop CRUD với SWING",
+		"date": "31-05-2023",
+		"startTime": "20:30",
+		"endTime": "22:30",
+		"link": "https://forms.gle/kR6FBVuc8sTUYAy8A"
 	}
 ]
